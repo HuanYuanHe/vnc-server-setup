@@ -1,8 +1,6 @@
 #!/bin/sh
 
-x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
 x-window-manager &
-
 metacity &
 gnome-settings-daemon &
 gnome-panel &
