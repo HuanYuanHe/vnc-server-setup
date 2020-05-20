@@ -1,8 +1,18 @@
 #!/bin/sh
 
-x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRES
+xrdb $HOME/.Xresources
+xsetroot -solid grey
+xterm -geometry 640x480 -ls -title "$VNCDESKTOP Desktop" &
 x-window-manager &
+# Fix to make GNOME work
+export XKL_XMODMAP_DISABLE=1
+/etc/X11/Xsession
 
-metacity &
-gnome-settings-daemon &
+vncconfig -iconic &
 gnome-panel &
+gnome-settings-daemon &
+metacity &
+nautilus &
+gnome-session &
